@@ -6,12 +6,15 @@ require("scripts.ItBeats.heartbeat")
 require("scripts.ItBeats.cellBlacklist")
 
 PlayerState = {
-    inRM = self.cell.region == "red mountain region",
+    -- throws an error at the character creation, but whatever
+    inRM = self.cell and self.cell.region == "red mountain region" or false,
     heartIsDead = types.Player.quests(self)["C3_DestroyDagoth"].stage >= 20
 }
 
 local function updateCurrentRegion()
     local cell = self.cell
+    -- safe measure
+    if not cell then return end
     -- in case you have a player home with teleports, for example
     if BlacklistedInteriors[string.lower(cell.name)] then return end
 

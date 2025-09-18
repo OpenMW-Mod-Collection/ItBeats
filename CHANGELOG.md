@@ -1,10 +1,16 @@
-# It Beats
+# It Beats (OpenMW)
+
+## 1.2.1
+
+### Fixes
+
+- The mod no longer crash on character creation
 
 ## 1.2
 
 ## Features
 
-- Final version of SFX mixed by by MADpixel
+- Final version of SFX mixed by MADpixel
 - Added an option to switch between SFX groups (default and 2 versions of Heartthrum)
 
 ## Fixes
