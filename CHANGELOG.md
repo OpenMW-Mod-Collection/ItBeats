@@ -1,10 +1,16 @@
 # It Beats (OpenMW)
 
+## 1.2.2
+
+### Fixes
+
+- Fixed heartbeat not stopping after killing the Heart of Lorkhan
+
 ## 1.2.1
 
 ### Fixes
 
-- The mod no longer crash on character creation
+- The mod no longer crashes on character creation
 
 ## 1.2
 

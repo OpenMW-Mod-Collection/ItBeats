@@ -6,14 +6,15 @@ require("scripts.ItBeats.heartbeat")
 require("scripts.ItBeats.cellBlacklist")
 
 PlayerState = {
-    -- throws an error at the character creation, but whatever
     inRM = self.cell and self.cell.region == "red mountain region" or false,
     heartIsDead = types.Player.quests(self)["C3_DestroyDagoth"].stage >= 20
 }
 
 local function updateCurrentRegion()
     local cell = self.cell
-    -- safe measure
+    -- safety measure
+    -- actually happens on the character creation,
+    -- when the player doesn't exist yet, but mod needs to initialize
     if not cell then return end
     -- in case you have a player home with teleports, for example
     if BlacklistedInteriors[string.lower(cell.name)] then return end
@@ -33,7 +34,7 @@ time.runRepeatedly(
 return {
     engineHandlers = {
         onQuestUpdate = function (questId, stage)
-            if questId == "C3_DestroyDagoth" and stage == 20 then
+            if string.lower(questId) == "c3_destroydagoth" and stage == 20 then
                 PlayerState.heartIsDead = true
             end
         end
