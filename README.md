@@ -43,5 +43,3 @@ Samples used:
 - Heartthrum SFX by [Fredrik Jonasson](https://fredrikjonasson.net/) and RedFurryDemon
 - [Thudding Heartbeat](https://pixabay.com/sound-effects/thudding-heartbeat-372487/) by DRAGON-STUDIO
 - [024592_Earthquake remix of Laumark's Freesound #415125](https://pixabay.com/sound-effects/024592-earthquake-remix-of-laumark39s-freesound-415125flac-69744/) by freesound community
-
-[Cover artwork](https://www.deviantart.com/ralyncoyote/art/Heart-of-Lorkhan-911155714) made by [ralyncoyote](https://www.deviantart.com/ralyncoyote/gallery)
