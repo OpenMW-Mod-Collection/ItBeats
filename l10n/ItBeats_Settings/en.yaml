@@ -5,10 +5,7 @@ heartbeat_groupName: "Heartbeat"
 sfx_name: "SFX Group"
 sfx_description: "Heartthrum SFX uses same files for all 5 locations."
 tempo_name: "Tempo (sec)"
-tempo_description: |
-  How often the heart will beat.
-
-  !! To apply this change you'll need to restart the game or run "reloadlua" command in the console !!
+tempo_description: How often the heart will beat.
 maxOffset_name: "Random Offset (sec)"
 maxOffset_description: |
   Random offset [0;N] which is added to the Tempo value.
@@ -26,6 +23,7 @@ facilityCavernVolume_description: "It's where you meet Dagoth Ur for the first t
 akulakhansChamberVolume_name: "Akulakhan's Chamber Volume"
 
 debug_groupName: "Debug"
-enableMod_name: "Enable Mod"
 ignoreRegionRequirement_name: "Ignore Region Requirement"
 ignoreQuestRequirement_name: "Ignore Quest Requirement"
+ignoreQuestRequirement_description: >
+  Requires running "reloadlua" or reloading the game to take effect.

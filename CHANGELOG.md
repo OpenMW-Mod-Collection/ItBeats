@@ -1,5 +1,14 @@
 # It Beats (OpenMW)
 
+## 2.0
+
+- Complete mod rewrite from the ground up
+- Codebase is a million times more simpler and better
+- Codebase no longer irritates me, the developer
+- Improved performance (not that it was bad to begin with, but still)
+- Prep for multiplayer (not that it's happening anytime soon)
+- Mod is no longer locale-dependant (and it didn't need to be in the first place)
+
 ## 1.2.2
 
 ### Fixes

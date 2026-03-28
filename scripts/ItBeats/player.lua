@@ -1,47 +1,36 @@
-local types = require("openmw.types")
-local time = require("openmw_aux.time")
-local self = require("openmw.self")
 local core = require("openmw.core")
-require("scripts.ItBeats.heartbeat")
-require("scripts.ItBeats.cellBlacklist")
+local ambient = require("openmw.ambient")
+local self = require("openmw.self")
+local storage = require("openmw.storage")
 
-PlayerState = {
-    inRM = self.cell and self.cell.region == "red mountain region" or false,
-    heartIsDead = types.Player.quests(self)["C3_DestroyDagoth"].stage >= 20
-}
+require("scripts.ItBeats.utils.consts")
+require("scripts.ItBeats.utils.cellPlayer")
 
-local function updateCurrentRegion()
-    local cell = self.cell
-    -- safety measure
-    -- actually happens on the character creation,
-    -- when the player doesn't exist yet, but mod needs to initialize
-    if not cell then return end
-    -- in case you have a player home with teleports, for example
-    if BlacklistedInteriors[string.lower(cell.name)] then return end
+local sectionHeartbeat = storage.globalSection("SettingsItBeats_heartbeat")
 
-    if cell.isExterior then
-        PlayerState.inRM = cell.region == "red mountain region"
-    else
-        core.sendGlobalEvent("isCellInRM", cell.id)
+local function onQuestUpdate(questId, stage)
+    if questId == HeartQuest.id and stage >= HeartQuest.stage then
+        core.sendGlobalEvent("ItBeats_HeartIsDead")
     end
 end
 
-time.runRepeatedly(
-    updateCurrentRegion,
-    1 * time.second,
-    { type = time.SimulationTime })
+local function playSFX()
+    local cellType = GetRMCellType(self.cell)
+    local volume = GetVolumeByCellType(cellType)
+    local sfxGroup = sectionHeartbeat:get("sfx")
+    local filePath = Files[sfxGroup][cellType]
+
+    ambient.playSoundFile(
+        filePath,
+        { volume = volume }
+    )
+end
 
 return {
     engineHandlers = {
-        onQuestUpdate = function (questId, stage)
-            if string.lower(questId) == "c3_destroydagoth" and stage == 20 then
-                PlayerState.heartIsDead = true
-            end
-        end
+        onQuestUpdate = onQuestUpdate,
     },
     eventHandlers = {
-        updateInRM = function (status)
-            PlayerState.inRM = status
-        end
+        ItBeats_PlaySFX = playSFX,
     }
 }
