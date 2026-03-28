@@ -19,7 +19,6 @@ local function playSFX()
     local volume = GetVolumeByCellType(cellType)
     local sfxGroup = sectionHeartbeat:get("sfx")
     local filePath = Files[sfxGroup][cellType]
-    print(filePath)
 
     ambient.playSoundFile(
         filePath,

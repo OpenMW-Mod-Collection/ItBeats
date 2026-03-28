@@ -1,5 +1,9 @@
 # It Beats (OpenMW)
 
+## 2.0.2
+
+- The mod no longer crashes on character creation. Again
+
 ## 2.0.1
 
 - Fixed neither Heartthrum SFX groups not working

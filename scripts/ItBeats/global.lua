@@ -67,6 +67,8 @@ end
 
 local function onPlayerAdded(player)
     local cell = player.cell
+    -- yeah yeah, we get it, chargen
+    if not cell then return end
 
     playerData[player.id] = {
         player = player,
