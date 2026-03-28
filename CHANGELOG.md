@@ -1,5 +1,9 @@
 # It Beats (OpenMW)
 
+## 2.0.1
+
+- Fixed neither Heartthrum SFX groups not working
+
 ## 2.0
 
 - Complete mod rewrite from the ground up

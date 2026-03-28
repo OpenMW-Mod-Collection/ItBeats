@@ -17,8 +17,8 @@ I.Settings.registerGroup {
                 l10n = "ItBeats_Settings",
                 items = {
                     "It Beats",
-                    "Heartthrum HoF",
-                    "Heartthrum HoF Vanilla",
+                    "Heartthrum HoL",
+                    "Heartthrum HoL Vanilla",
                 },
             },
             default = "It Beats"

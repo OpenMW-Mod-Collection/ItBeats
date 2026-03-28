@@ -27,6 +27,8 @@ InteriorWhitelist = {
 }
 
 SoundsFolder = "Sound/ItBeats/"
+local hol = "Heartthrum - HeartOfLorkhan.wav"
+local holVanilla = "Heartthrum - HeartOfLorkhan (vanilla version).wav"
 Files = {
     ["It Beats"] = {
         [CellTypes.exterior]          = SoundsFolder .. "1. Mountain.wav",
@@ -35,18 +37,18 @@ Files = {
         [CellTypes.facilityCavern]    = SoundsFolder .. "4. Facility Cavern.wav",
         [CellTypes.akulakhansChamber] = SoundsFolder .. "5. Akulakhans Chamber.wav",
     },
-    ["Heartthrum HoF"] = {
-        [CellTypes.exterior]          = SoundsFolder .. "Heartthrum - Heart of Lorkhan.wav",
-        [CellTypes.genericInterior]   = SoundsFolder .. "Heartthrum - Heart of Lorkhan.wav",
-        [CellTypes.dagothUr]          = SoundsFolder .. "Heartthrum - Heart of Lorkhan.wav",
-        [CellTypes.facilityCavern]    = SoundsFolder .. "Heartthrum - Heart of Lorkhan.wav",
-        [CellTypes.akulakhansChamber] = SoundsFolder .. "Heartthrum - Heart of Lorkhan.wav",
+    ["Heartthrum HoL"] = {
+        [CellTypes.exterior]          = SoundsFolder .. hol,
+        [CellTypes.genericInterior]   = SoundsFolder .. hol,
+        [CellTypes.dagothUr]          = SoundsFolder .. hol,
+        [CellTypes.facilityCavern]    = SoundsFolder .. hol,
+        [CellTypes.akulakhansChamber] = SoundsFolder .. hol,
     },
-    ["Heartthrum HoF Vanilla"] = {
-        [CellTypes.exterior]          = SoundsFolder .. "Heartthrum - Heart of Lorkhan (vanilla version).wav",
-        [CellTypes.genericInterior]   = SoundsFolder .. "Heartthrum - Heart of Lorkhan (vanilla version).wav",
-        [CellTypes.dagothUr]          = SoundsFolder .. "Heartthrum - Heart of Lorkhan (vanilla version).wav",
-        [CellTypes.facilityCavern]    = SoundsFolder .. "Heartthrum - Heart of Lorkhan (vanilla version).wav",
-        [CellTypes.akulakhansChamber] = SoundsFolder .. "Heartthrum - Heart of Lorkhan (vanilla version).wav",
+    ["Heartthrum HoL Vanilla"] = {
+        [CellTypes.exterior]          = SoundsFolder .. holVanilla,
+        [CellTypes.genericInterior]   = SoundsFolder .. holVanilla,
+        [CellTypes.dagothUr]          = SoundsFolder .. holVanilla,
+        [CellTypes.facilityCavern]    = SoundsFolder .. holVanilla,
+        [CellTypes.akulakhansChamber] = SoundsFolder .. holVanilla,
     },
 }
