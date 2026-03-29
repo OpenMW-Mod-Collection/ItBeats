@@ -61,7 +61,7 @@ local function onDoorActivated(door, actor)
     if not dest then return end
 
     if dest.region then
-        playerData[actor.id] = dest.region
+        playerData[actor.id].region = dest.region
     end
 end
 

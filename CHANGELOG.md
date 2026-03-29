@@ -1,5 +1,9 @@
 # It Beats (OpenMW)
 
+## 2.0.3
+
+- Fixed mod breaking on door interaction
+
 ## 2.0.2
 
 - The mod no longer crashes on character creation. Again
