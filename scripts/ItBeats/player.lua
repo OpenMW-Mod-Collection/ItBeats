@@ -16,6 +16,8 @@ end
 
 local function playSFX()
     local cellType = GetRMCellType(self.cell)
+    if not cellType then return end
+
     local volume = GetVolumeByCellType(cellType)
     local sfxGroup = sectionHeartbeat:get("sfx")
     local filePath = Files[sfxGroup][cellType]
@@ -24,6 +26,13 @@ local function playSFX()
         filePath,
         { volume = volume }
     )
+
+    -- print(
+    --     "Current cell: " .. self.cell.id ..
+    --     "\nCell type: " .. cellType ..
+    --     "\nPlaying file: " .. filePath ..
+    --     "\nVolume: " .. volume
+    -- )
 end
 
 return {

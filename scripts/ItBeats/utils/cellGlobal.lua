@@ -6,13 +6,11 @@ local exploredCells = {}
 local function exploreCell(cell)
     for _, door in pairs(cell:getAll(types.Door)) do
         local destCell = types.Door.destCell(door)
-        if destCell == nil then goto continue end
-
-        if exploredCells[destCell.id] then
+        if not destCell or exploredCells[destCell.id] then
             goto continue
-        else
-            exploredCells[cell.id] = true
         end
+
+        exploredCells[cell.id] = true
 
         if destCell.isExterior then
             if destCell.region == RedMountainRegion then
@@ -21,6 +19,7 @@ local function exploreCell(cell)
         elseif exploreCell(destCell) then
             return true
         end
+
         ::continue::
     end
     return false

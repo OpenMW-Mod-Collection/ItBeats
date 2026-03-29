@@ -25,7 +25,9 @@ local function doHeartbeat()
     for _, data in pairs(playerData) do
         local currCell = data.player.cell
 
-        data.region = currCell.region or data.region
+        if currCell.isExterior then
+            data.region = currCell.region
+        end
 
         if InteriorBlacklist[currCell.id] then return end
 
@@ -58,10 +60,12 @@ local function onDoorActivated(door, actor)
     if actor.type ~= types.Player then return end
 
     local dest = types.Door.destCell(door)
-    if not dest then return end
+    if not dest or not door.cell.isExterior then return end
 
-    if dest.region then
+    if dest.isExterior then
         playerData[actor.id].region = dest.region
+    elseif IsInteriorInRMR(dest) then
+        playerData[actor.id].region = RedMountainRegion
     end
 end
 
@@ -75,7 +79,7 @@ local function onPlayerAdded(player)
         region = cell.region or "idk, probably interior",
     }
 
-    if not cell.isExterior and IsInteriorInRMR(cell) then
+    if not cell.region and IsInteriorInRMR(cell) then
         playerData[player.id].region = RedMountainRegion
     end
 end

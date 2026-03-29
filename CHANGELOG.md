@@ -1,5 +1,9 @@
 # It Beats (OpenMW)
 
+## 2.0.4
+
+- Fixed incorrect region checking based on interiors
+
 ## 2.0.3
 
 - Fixed mod breaking on door interaction
