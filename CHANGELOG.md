@@ -1,5 +1,9 @@
 # It Beats (OpenMW)
 
+## 2.0.5
+
+- Fixed region not updating when teleporting from interior to interior
+
 ## 2.0.4
 
 - Fixed incorrect region checking based on interiors

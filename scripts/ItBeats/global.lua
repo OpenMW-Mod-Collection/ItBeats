@@ -1,6 +1,4 @@
-local types = require("openmw.types")
 local time = require("openmw_aux.time")
-local I = require("openmw.interfaces")
 local world = require("openmw.world")
 local storage = require("openmw.storage")
 
@@ -25,14 +23,21 @@ local function doHeartbeat()
     for _, data in pairs(playerData) do
         local currCell = data.player.cell
 
-        if currCell.isExterior then
-            data.region = currCell.region
+        if currCell.id ~= data.lastCell.id then
+            data.lastCell = currCell
+            if data.lastCell.isExterior then
+                data.region = currCell.region
+            elseif IsInteriorInRMR(data.lastCell) then
+                data.region = RedMountainRegion
+            else
+                data.region = "Don't know, don't care"
+            end
         end
 
-        if InteriorBlacklist[currCell.id] then return end
+        if InteriorBlacklist[data.lastCell.id] then return end
 
         if data.region == RedMountainRegion
-            or InteriorWhitelist[currCell.id]
+            or InteriorWhitelist[data.lastCell.id]
             or sectionDebug:get("ignoreRegionRequirement")
         then
             time.newSimulationTimer(offset, callback, data.player)
@@ -56,19 +61,6 @@ local function heartDied()
     end
 end
 
-local function onDoorActivated(door, actor)
-    if actor.type ~= types.Player then return end
-
-    local dest = types.Door.destCell(door)
-    if not dest or not door.cell.isExterior then return end
-
-    if dest.isExterior then
-        playerData[actor.id].region = dest.region
-    elseif IsInteriorInRMR(dest) then
-        playerData[actor.id].region = RedMountainRegion
-    end
-end
-
 local function onPlayerAdded(player)
     local cell = player.cell
     -- yeah yeah, we get it, chargen
@@ -76,7 +68,8 @@ local function onPlayerAdded(player)
 
     playerData[player.id] = {
         player = player,
-        region = cell.region or "idk, probably interior",
+        lastCell = cell,
+        region = cell.region,
     }
 
     if not cell.region and IsInteriorInRMR(cell) then
@@ -105,8 +98,6 @@ local function onLoad(saveData)
         heartIsDead = false
     end
 end
-
-I.Activation.addHandlerForType(types.Door, onDoorActivated)
 
 -- idiot-proof solution
 for _, player in ipairs(world.players) do

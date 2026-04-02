@@ -13,7 +13,7 @@ The mod differentiates five separate player locations:
 
 1. **Akulakhan's Chamber** - current cell id: `Akulakhan's Chamber`
 2. **Dagoth Ur, Facility Cavern** (the room where you first meet Dagoth Ur) - current cell id: `Dagoth Ur, Facility Cavern`
-3. **The rest of Dagoth Ur (the citadel)** - current cell id contains: `Dagoth Ur`
+3. **The rest of Dagoth Ur (the citadel)** - current cell is interior and its id contains: `Dagoth Ur`
 4. **Generic interior** - current cell is an interior and at least one door leads to a Red Mountain region exterior cell (connected interiors are checked the same way)
 5. **Exterior** - current cell is exterior and located in the Red Mountain region
 
